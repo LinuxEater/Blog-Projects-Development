@@ -1,4 +1,4 @@
-const panel = document.querySelector('.panel');
+const panel = document.querySelector('.carousel-item');
 
 console.log(panel);
 

@@ -119,29 +119,14 @@ h1, h2, h3, h4, h5, h6 {
   animation: shake 0.4s ease-in-out;
 }
 
-.jumbotron{
+.img-front:hover{
+  transform: scale(1.055);
+  transition: transform 0.3s ease-in-out;
+}
+
+.side-blog.shadow:hover {
   cursor: pointer;
-  overflow: hidden;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.jumbotron.active {
-  position: fixed;
-  text-align: center;
-  top: 0;
-  left: 0;
-  width: 100vw !important;
-  height: 50vh !important;
-  background-color: rgba(0, 0, 0, 0.9);
-  z-index: 9999;
-  padding: 2rem !important;
-  margin: 0 !important;
-  box-sizing: border-box;
-  overflow-y: auto;
-}
-
-.panel-content {
-  max-width: 800px;
-  margin: 0 auto;
+  transform: scale(1.055);
+  transition: transform 0.3s ease-in-out;
 }
 

@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from .models import Blog, Category
 
+
 # Create your views here.
+# blog_projects/templatetags/custom_filters.py
 
 
 def home(request):
@@ -23,6 +25,7 @@ def posts_by_category(request, category_id):
     blogs = Blog.objects.filter(category=category, status='Published')
     context = {
         'blogs': blogs,
+        'category': category.category_name,
         'categories': categories,
         'selected_category': category,
     }
@@ -30,9 +33,11 @@ def posts_by_category(request, category_id):
 
 def post_detail(request, slug):
     categories = Category.objects.all()
-    blog = Blog.objects.get(slug=slug)
+    technologies = Blog.objects.values_list('technologies', flat=True).distinct()
+    blog = Blog.objects.get(slug=slug, status='Published')
     context = {
         'blog': blog,
+        'technologies': technologies,
         'categories': categories,
     }
     return render(request, 'single_post_detail.html', context)
