@@ -41,3 +41,7 @@ def post_detail(request, slug):
         'categories': categories,
     }
     return render(request, 'single_post_detail.html', context)
+
+
+def about(request):
+    return render(request, 'about.html')
