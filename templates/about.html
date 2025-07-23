@@ -1,5 +1,56 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
+<section id="about" class="bg-white text-dark py-5 position-relative">
+  <div class="container position-relative">
+
+    <!-- Botão Back to Home -->
+    <a href="{% url 'home' %}" class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 mt-3 me-3">
+      <i class="bi bi-arrow-left"></i> Back to Home
+    </a>
+
+    <div class="row align-items-center mt-4">
+      
+      <!-- Profile Image -->
+      <div class="col-md-4 text-center mb-4 mb-md-0">
+        <img src="{% static 'images/imageportfolio2.jpg' %}" alt="Moisés Souza" class="img-fluid rounded-circle shadow" style="max-width: 220px;">
+      </div>
+
+      <!-- About Text -->
+      <div class="col-md-8">
+        <h2 class="mb-3">About Me</h2>
+        <p>
+          Hi! I'm <strong>Moisés Souza</strong>, a full stack developer and Computer Engineering student passionate about building high-quality web applications. I focus on <strong>Python, Django, JavaScript, React, Node.js, and Next.js</strong>.
+        </p>
+        <p>
+          I have over 50 technology certifications and I’m developing a solo software house while working on freelance projects and deepening my cybersecurity studies.
+        </p>
+        <p>
+          This blog is my way of sharing knowledge, showcasing projects, and documenting my professional journey in tech.
+        </p>
+
+        <!-- Social Links -->
+        <div class="mt-4 d-flex flex-wrap gap-2">
+          <a href="https://www.linkedin.com/in/seu-usuario" class="btn btn-outline-primary btn-sm" target="_blank">
+            <i class="bi bi-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://wa.me/seu-numero" class="btn btn-outline-success btn-sm" target="_blank">
+            <i class="bi bi-whatsapp"></i> WhatsApp
+          </a>
+          <a href="https://www.facebook.com/seu-usuario" class="btn btn-outline-primary btn-sm" target="_blank">
+            <i class="bi bi-facebook"></i> Facebook
+          </a>
+          <a href="https://github.com/LinuxEater" class="btn btn-outline-dark btn-sm" target="_blank">
+            <i class="bi bi-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 
 {% endblock %}
