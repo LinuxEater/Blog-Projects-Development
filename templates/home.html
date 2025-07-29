@@ -93,7 +93,7 @@
           <img src="{{ post.image.url }}" alt="Post Image" class="shadow-lg bg-body-tertiary img-fluid mb-3 rounded" style="width: 50rem; height: 20rem;">
           <p class="mt-3">{{ post.short_description }}</p>
           <p>{{ post.blog_body | truncatewords:100 }}</p>
-          <a class="btn btn-outline-info mb-2">More</a>
+          <a href="{% url 'post_detail' post.slug %}" class="btn btn-outline-info mb-2">More</a>
           <p><strong class="text-bg-dark p-1 rounded">Documentation:</strong><a href="{{ post.url_github }}" target="_blank" class="text-decoration-none"> {{ post.url_github }}</a></p>
         </div>
         {% endif %}

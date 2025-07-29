@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Blog, Category
+from services.models import Services
 
 
 # Create your views here.
@@ -45,3 +46,10 @@ def post_detail(request, slug):
 
 def about(request):
     return render(request, 'about.html')
+
+def services(request):
+    services = Services.objects.all()
+    context = {
+        'services':services
+    }
+    return render(request, 'services.html', context)
