@@ -19,10 +19,19 @@
                 </header>
                 <!-- Preview image figure-->
                 <figure class="mb-4"><img class="img-fluid rounded" src="{{ blog.image.url }}" alt="..." /></figure>
+                
+                                <!-- Video demo -->
+                <div class="mb-4">
+                    <video class="img-fluid rounded" controls>
+                        <source src="{{ blog.video.url }}" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
                 <!-- Post content-->
                 <section class="mb-5">
-                    <p class="fs-5 mb-4">{{ blog.short_description }}</p>
-                    <p class="fs-5 mb-4">{{ blog.blog_body }}</p>
+                    <p class="fs-5 mb-4">{{ blog.short_description | safe}}</p>
+                    <p class="fs-5 mb-4">{{ blog.blog_body | safe }}</p>
                     <h4 class="text-dark">Technologies Used:</h4>
                     <i class="bi bi-person-check me-2 text-danger"></i><span>{{ blog.technologies }}</span>
                     <p class="fs-5 mb-2 mt-3"><strong class="text-bg-dark p-1 rounded">Documentation:</strong> <a href="{{ blog.url_github }}" target="_blank" class="text-decoration-none">{{ blog.url_github }}</a></p>
