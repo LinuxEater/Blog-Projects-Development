@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Blog, Category
 from services.models import Services
+from .forms import RegistrationForm
+from django.db.models import Q
 
 
 # Create your views here.
@@ -53,3 +55,45 @@ def services(request):
         'services':services
     }
     return render(request, 'services.html', context)
+
+def search(request):
+    keyword = request.GET.get('keyword', '')  # Default to empty string if no keyword is provided
+    
+    # Search blogs by title, content, or technologies
+    blogs = Blog.objects.filter(
+        Q(title__icontains=keyword) |
+        Q(url_github__icontains=keyword) |
+        Q(technologies__icontains=keyword) |
+        Q(blog_body__icontains=keyword) |
+        Q(short_description__icontains=keyword),
+        status='Published'
+    ).distinct()
+
+    # If no blogs are found, return a message in the context
+    if not blogs:
+        message = f"No results found for '{keyword}'"
+    else:
+        message = None
+
+    context = {
+        'blogs': blogs,
+        'message': message,
+        'search_query': keyword,
+    }
+
+    return render(request, 'search_results.html', context)
+
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+        else:
+            print(form.errors)
+    else:
+        form = RegistrationForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'register.html', context)

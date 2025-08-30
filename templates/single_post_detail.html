@@ -18,15 +18,19 @@
                     <a class="badge bg-primary text-decoration-none text-light" href="#!"></a>
                 </header>
                 <!-- Preview image figure-->
-                <figure class="mb-4"><img class="img-fluid rounded" src="{{ blog.image.url }}" alt="..." /></figure>
+                <figure class="mb-4"><img class="img-fluid shadow-lg mb-5 bg-body-tertiary rounded" src="{{ blog.image.url }}" alt="..." /></figure>
                 
                                 <!-- Video demo -->
-                <div class="mb-4">
-                    <video class="img-fluid rounded" controls>
-                        <source src="{{ blog.video.url }}" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
+                {% if blog.video.url %}
+                    <div class="mb-4">
+                        <video class="img-fluid shadow-lg mb-5 bg-body-tertiary rounded" controls>
+                            <source src="{{ blog.video.url }}" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                {% else %}
+                    <p class="text-center bg-danger-subtle" >There's no video avaliable</p>
+                {% endif %}
 
                 <!-- Post content-->
                 <section class="mb-5">
@@ -41,16 +45,6 @@
         </div>
         <!-- Side widgets-->
         <div class="col-lg-4">
-            <!-- Search widget-->
-            <div class="card mb-4">
-                <div class="card-header">Search</div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                    </div>
-                </div>
-            </div>
             <!-- Categories widget-->
             <div class="card mb-4 p-3">
                 <h4 class="font-italic">Categories</h4>
