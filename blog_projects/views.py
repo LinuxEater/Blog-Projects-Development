@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect
-from .models import Blog, Category
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Blog, Category, Comment
 from services.models import Services
+from django.contrib import auth
+from django.contrib.auth.forms import AuthenticationForm
 from .forms import RegistrationForm
 from django.db.models import Q
-
+from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
 # blog_projects/templatetags/custom_filters.py
@@ -35,14 +37,31 @@ def posts_by_category(request, category_id):
     return render(request, 'posts_by_category.html', context)
 
 def post_detail(request, slug):
+    single_blog = get_object_or_404(Blog, slug=slug, status='Published')
     categories = Category.objects.all()
     technologies = Blog.objects.values_list('technologies', flat=True).distinct()
     blog = Blog.objects.get(slug=slug, status='Published')
+    
+    if request.method == 'POST':
+        comment = Comment()
+        comment.user = request.user
+        comment.blog = single_blog
+        comment.comment = request.POST['comment']
+        comment.save()
+        return HttpResponseRedirect(request.path_info)
+    
+    # Comments
+    comments = Comment.objects.filter(blog=single_blog)
+    comment_count = comments.count()
+    
     context = {
         'blog': blog,
         'technologies': technologies,
         'categories': categories,
+        'comments': comments,
+        'comment_count': comment_count
     }
+    
     return render(request, 'single_post_detail.html', context)
 
 
@@ -97,3 +116,25 @@ def register(request):
         'form': form
     }
     return render(request, 'register.html', context)
+
+def login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            user = auth.authenticate(username=username, password=password)
+            if user is not None:
+                auth.login(request, user)
+            return redirect('home')
+    form = AuthenticationForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'login.html', context)
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('home')

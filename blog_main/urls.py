@@ -6,6 +6,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog_projects.urls')),  # Include the URLs from blog_projects app
+    path('dashboard/', include('dashboard.urls')),  # Include the URLs from blog_projects app
 ]
 
 if settings.DEBUG:

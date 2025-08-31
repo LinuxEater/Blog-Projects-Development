@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-43shs8oe+&rjcf+$%8h$afuw8fiu#)c4s-5%+@*cor&&cvtxk)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '3b3ff1969226.ngrok-free.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '3b3ff1969226.ngrok-free.app', '*']
 
 
 # Application definition
@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     'services',
-    'ckeditor'
+    'ckeditor',
+    'dashboard',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
