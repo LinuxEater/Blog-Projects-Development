@@ -3,24 +3,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Dev.Souza</title>
-    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/external-outline-juicy-fish/60/external-developer-devops-outline-outline-juicy-fish.png">
-    <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  </head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✅ Essential SEO -->
+  <title>{% block title %}Dev.Souza Blog - Technology, Projects & Development{% endblock %}</title>
+  <meta name="description" content="Dev.Souza Blog: tutorials, projects, programming tips, and technology insights for developers and tech enthusiasts.">
+  <meta name="keywords" content="Programming blog, web development, Django, Python, Dev Souza, tech tutorials, software projects, backend, frontend, fullstack">
+  <meta name="author" content="Moises Souza Santos">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+  <!-- ✅ Open Graph (Facebook & LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dev.Souza Blog">
+  <meta property="og:title" content="Dev.Souza Blog - Web Development & Technology">
+  <meta property="og:description" content="Tutorials, projects, and tips about web development with Django, Python, and more.">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  <meta property="og:image" content="{% static 'images/home_page_1.jpg' %}">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image:alt" content="Dev.Souza Blog - Web Development & Technology">
+
+  <!-- ✅ Social Profiles -->
+  <meta property="og:see_also" content="https://www.linkedin.com/in/mois%C3%A9s-souza-santos/">
+  <meta property="article:author" content="https://www.facebook.com/profile.php?id=100011995308814">
+  <meta property="og:see_also" content="https://www.instagram.com/moises123bbb/">
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/x-icon" href="https://img.icons8.com/external-outline-juicy-fish/60/external-developer-devops-outline-outline-juicy-fish.png">
+
+  <!-- ✅ Mobile Browser Theme Color -->
+  <meta name="theme-color" content="#0d6efd">
+
+  <!-- ✅ CSS & Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+
+  <!-- ✅ Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
 <body>
     <div class="container">
       <header class="blog-header py-3">
@@ -84,6 +107,5 @@
   <p>Django blog built with <span style="color: #e25555;">&hearts;</span> by <a href="https://github.com/LinuxEater" target="_blank">Moises</a></p>
 </footer>
 <script src="{% static 'js/script.js' %}"></script>
-<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-</body>
-</html>
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+</body></html>

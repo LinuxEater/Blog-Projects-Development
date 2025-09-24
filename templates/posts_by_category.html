@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
+{% block title %}{{ category.category_name }} Posts | Dev.Souza Blog{% endblock %}
+{% block meta_description %}Explore all posts in the {{ category.category_name }} category at Dev.Souza Blog, with tutorials, projects, and development tips.{% endblock %}
 {% block content %}
     
 <h1 class="container-container">Category - {{ category }}</h1>
@@ -11,8 +13,8 @@
         <div class="card-body">
           <a href="{% url 'post_detail' post.slug %}" style="text-decoration:none;"><h3 class="text-info">{{ post.title }}</h3></a>
           <small class="mb-1 text-muted">{{post.created_at}} ago | {{post.author}}</small>
-          <p class="card-text">{{ post.short_description }}</p>
-          <p class="card-text">{{ post.blog_body }}</p>
+          <p class="card-text">{{ post.short_description | safe }}</p>
+          <p class="card-text">{{ post.blog_body | safe }}</p>
         </div>
       </div>
     </div>

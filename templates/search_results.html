@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
+{% block title %}Search Results for "{{ keyword }}" | Dev.Souza Blog{% endblock %}
+{% block meta_description %}Check out Dev.Souza Blog's search results for "{{ keyword }}": tutorials, projects, and tech tips matching your query.{% endblock %}
+
 {% block content %}
 
 <h1 class="container-container text-info">Search Item - {{ search_query }}</h1>
